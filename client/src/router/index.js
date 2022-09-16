@@ -19,13 +19,18 @@ const router = createRouter({
       component: HomeView,
       children: [
         {
-          path: "/match/:match_id",
+          path: "/match/detail/",
           name: "match",
           component: MatchPlayersDetail,
           children: [
             {
-              path: ":hero_id",
+              path: ":match_id",
               name: "detail",
+              component: MatchPlayersDetail,
+            },
+            {
+              path: ":match_id/:hero_id",
+              name: "player",
               component: DetailAnalysis,
             },
           ],
@@ -78,6 +83,12 @@ const router = createRouter({
     },
     { path: "/:pathMatch(.*)*", name: "notfound", component: NotFoundView },
   ],
+});
+
+router.beforeEach(() => {
+  const store = useCredentialStore();
+  if (localStorage.getItem("access_token")) store.isLogin = true;
+  else store.isLogin = false;
 });
 
 export default router;
