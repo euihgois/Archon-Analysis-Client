@@ -1,7 +1,8 @@
 import { defineStore } from "pinia";
+import axiosInstance from "../apis/axios";
 
 export const useMainStore = defineStore("main", {
-  state: () => ({}),
+  state: () => ({ data: null }),
   getters: {},
   actions: {},
 });

@@ -1,3 +1,11 @@
-<script></script>
+<script>
+import NavBar from "../components/NavBar.vue";
 
-<template></template>
+export default {
+  components: { NavBar },
+};
+</script>
+
+<template>
+  <NavBar />
+</template>
